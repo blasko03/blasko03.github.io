@@ -3,12 +3,22 @@ entries:
   railsk8s:
   - apiVersion: v2
     appVersion: latest
-    created: "2022-11-22T22:20:50.096052+01:00"
+    created: "2022-11-24T10:48:30.629784+01:00"
     description: A Helm chart for Rails applications with sidekiq and with pre deploy migration
-    digest: 3db503ae0d644bb2f1138849191b972cc7bbe39039ddef1097cbb23e131abba1
+    digest: e511e61bd8e0507de42ab47d6a062554460b53e3503eb167497cb377a1b16f7b
+    name: railsk8s
+    type: application
+    urls:
+    - https://blasko03.github.io/daniels_charts/railsk8s-1.1.0.tgz
+    version: 1.1.0
+  - apiVersion: v2
+    appVersion: latest
+    created: "2022-11-24T10:48:30.629304+01:00"
+    description: A Helm chart for Rails applications with sidekiq and with pre deploy migration
+    digest: 394bc550ce86b54d86b5ef5efe5ae9faf9667a7a34be7fc4534dd8674645e065
     name: railsk8s
     type: application
     urls:
     - https://blasko03.github.io/daniels_charts/railsk8s-1.0.0.tgz
     version: 1.0.0
-generated: "2022-11-22T22:20:50.095631+01:00"
+generated: "2022-11-24T10:48:30.62893+01:00"

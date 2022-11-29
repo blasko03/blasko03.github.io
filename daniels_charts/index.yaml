@@ -3,8 +3,19 @@ entries:
   railsk8s:
   - apiVersion: v2
     appVersion: latest
-    created: "2022-11-24T10:48:30.629784+01:00"
-    description: A Helm chart for Rails applications with sidekiq and with pre deploy migration
+    created: "2022-11-29T10:12:14.596399+01:00"
+    description: A Helm chart for Rails applications with sidekiq and with pre deploy
+      migration
+    digest: 39746e56e2fce9bbbf9dd2afc66a69c6a935110a83bd863ee3e990c8696d9ef4
+    name: railsk8s
+    type: application
+    urls:
+    - https://blasko03.github.io/daniels_charts/railsk8s-1.2.0.tgz
+    version: 1.2.0
+  - apiVersion: v2
+    appVersion: latest
+    created: "2022-11-29T10:12:14.596107+01:00"
+    description: A Helm chart for Kubernetes
     digest: e511e61bd8e0507de42ab47d6a062554460b53e3503eb167497cb377a1b16f7b
     name: railsk8s
     type: application
@@ -13,12 +24,12 @@ entries:
     version: 1.1.0
   - apiVersion: v2
     appVersion: latest
-    created: "2022-11-24T10:48:30.629304+01:00"
-    description: A Helm chart for Rails applications with sidekiq and with pre deploy migration
+    created: "2022-11-29T10:12:14.594726+01:00"
+    description: A Helm chart for Kubernetes
     digest: 394bc550ce86b54d86b5ef5efe5ae9faf9667a7a34be7fc4534dd8674645e065
     name: railsk8s
     type: application
     urls:
     - https://blasko03.github.io/daniels_charts/railsk8s-1.0.0.tgz
     version: 1.0.0
-generated: "2022-11-24T10:48:30.62893+01:00"
+generated: "2022-11-29T10:12:14.594154+01:00"

@@ -1,0 +1,14 @@
+{{- if .Values.persistentVolume.enabled }}
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: {{ include "railsk8s.fullname" . }}-pv-claim
+  labels:
+    {{- include "railsk8s.labels" . | nindent 4 }}
+  {{- with .Values.persistentVolume.annotations }}
+  annotations:
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
+spec:
+  {{- toYaml .Values.persistentVolume.specs | nindent 2 }}
+{{- end }}

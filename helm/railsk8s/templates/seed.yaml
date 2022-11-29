@@ -1,9 +1,10 @@
-{{- if .Values.seeds.enabled }}
+{{- if .Values.seed.enabled }}
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: {{ include "railsk8s.fullname" . }}-migration
+  name: {{ include "railsk8s.fullname" . }}-seed
   labels:
+    {{- include "railsk8s.labels" . | nindent 4 }}
   annotations:
     "helm.sh/hook": pre-install,pre-upgrade
     "helm.sh/hook-weight": "-1"
@@ -11,7 +12,7 @@ metadata:
 spec:
   template:
     metadata:
-      name: {{ include "railsk8s.fullname" . }}-migration
+      name: {{ include "railsk8s.fullname" . }}-seed
     spec:
       restartPolicy: Never
       {{- with .Values.image.imagePullSecrets }}
@@ -23,7 +24,7 @@ spec:
         image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
         imagePullPolicy: {{ .Values.image.pullPolicy }}
         command: ["/bin/sh"]
-        args: ["-c", "bundle exec rake db:seeds"]
+        args: ["-c", "bundle exec rake db:seed"]
         env:
           {{- toYaml .Values.env | nindent 12 }}
 {{- end }}

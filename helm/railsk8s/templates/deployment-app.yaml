@@ -40,6 +40,11 @@ spec:
             - name: http
               containerPort: {{ .Values.service.port }}
               protocol: TCP
+          {{- if .Values.persistentVolume.enabled }}
+          volumeMounts:
+            - name: {{ include "railsk8s.fullname" . }}-persistent-storage
+              mountPath: {{ .Values.persistentVolume.mountPath }}
+          {{- end }}
           livenessProbe:
             periodSeconds: 10
             timeoutSeconds: 2
@@ -62,6 +67,12 @@ spec:
             {{- toYaml .Values.resources | nindent 12 }}
           env:
             {{- toYaml .Values.env | nindent 12 }}
+      {{- if .Values.persistentVolume.enabled }}
+      volumes:
+      - name: {{ include "railsk8s.fullname" . }}-persistent-storage
+        persistentVolumeClaim:
+          claimName: {{ include "railsk8s.fullname" . }}-pv-claim
+      {{- end }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}

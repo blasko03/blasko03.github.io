@@ -27,4 +27,6 @@ spec:
         args: ["-c", "bundle exec rake db:migrate"]
         env:
           {{- toYaml .Values.env | nindent 12 }}
+        envFrom:
+          {{- toYaml .Values.envFrom | nindent 12 }}
 {{- end }}

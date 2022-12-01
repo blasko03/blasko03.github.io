@@ -67,6 +67,8 @@ spec:
             {{- toYaml .Values.resources | nindent 12 }}
           env:
             {{- toYaml .Values.env | nindent 12 }}
+          envFrom:
+            {{- toYaml .Values.envFrom | nindent 12 }}
       {{- if .Values.persistentVolume.enabled }}
       volumes:
       - name: {{ include "railsk8s.fullname" . }}-persistent-storage

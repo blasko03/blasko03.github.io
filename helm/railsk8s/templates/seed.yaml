@@ -28,6 +28,7 @@ spec:
         env:
           {{- toYaml .Values.env | nindent 10 }}
         {{- .Values.envFrom }}
+        {{- if .Values.envFrom }}
         envFrom:
           {{- toYaml .Values.envFrom | nindent 10 }}
         {{- end }}

@@ -6,9 +6,9 @@ metadata:
   labels:
     {{- include "railsk8s.labels" . | nindent 4 }}
   annotations:
-    "helm.sh/hook": pre-install,pre-upgrade
-    "helm.sh/hook-weight": "-2"
-    "helm.sh/hook-delete-policy": hook-succeeded
+    helm.sh/hook: pre-install,pre-upgrade
+    helm.sh/hook-weight: "-2"
+    helm.sh/hook-delete-policy: hook-succeeded
 spec:
   template:
     metadata:
@@ -30,5 +30,16 @@ spec:
         {{- if .Values.envFrom }}
         envFrom:
           {{- toYaml .Values.envFrom | nindent 10 }}
-        {{- end }}
+        {{- end }}        
+        {{- if .Values.persistentVolume.enabled }}
+        volumeMounts:
+          - name: {{ include "railsk8s.fullname" . }}-persistent-storage
+            mountPath: {{ .Values.persistentVolume.mountPath }}
+        {{- end }}    
+      {{- if .Values.persistentVolume.enabled }}
+      volumes:
+      - name: {{ include "railsk8s.fullname" . }}-persistent-storage
+        persistentVolumeClaim:
+          claimName: {{ include "railsk8s.fullname" . }}-pv-claim
+      {{- end }}
 {{- end }}

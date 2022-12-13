@@ -5,8 +5,11 @@ metadata:
   name: {{ include "railsk8s.fullname" . }}-pv-claim
   labels:
     {{- include "railsk8s.labels" . | nindent 4 }}
-  {{- with .Values.persistentVolume.annotations }}
   annotations:
+    helm.sh/hook: pre-install,pre-upgrade
+    helm.sh/hook-weight: "-3"
+    helm.sh/resource-policy: keep
+  {{- with .Values.persistentVolume.annotations }}
     {{- toYaml . | nindent 4 }}
   {{- end }}
 spec:
